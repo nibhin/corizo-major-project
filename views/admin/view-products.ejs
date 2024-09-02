@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Products</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <a href="/admin/view-products" class="active">View Products</a>
+            <a href="/admin/view-orders">View Orders</a>
+            <a href="/admin/view-customers">View Customers</a>
+            <a href="/admin/add-product">Add Product</a>
+            <a href="/admin/view-transactions" class="active">View Transactions</a>
+            <a href="/admin/logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h2>All Products</h2>
+        <% if (products.length > 0) { %>
+            <ul>
+                <% products.forEach(product => { %>
+                    <li class="product-card">
+                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>" />
+                        <h3><%= product.name %></h3>
+                        <p><%= product.description %></p>
+                        <p>Price: $<%= product.price.toFixed(2) %></p>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No products available.</p>
+        <% } %>
+    </main>
+</body>
+</html>

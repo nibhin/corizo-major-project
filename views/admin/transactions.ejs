@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+    <link rel="stylesheet" href="/styles/main3.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <a href="/admin/view-products">View Products</a>
+            <a href="/admin/view-orders">View Orders</a>
+            <a href="/admin/view-customers">View Customers</a>
+            <a href="/admin/transactions">View Transactions</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <h1>Transactions</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Order</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (payments && payments.length > 0) { %>
+                <% payments.forEach(payment => { %>
+                    <tr>
+                        <td><%= payment.userId ? payment.userId.username : 'Unknown User' %></td>
+                        <td><%= payment.orderId ? payment.orderId._id : 'Unknown Order' %></td>
+                        <td><%= payment.amount %></td>
+                        <td><%= payment.date.toLocaleDateString() %></td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4">No transactions found</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>

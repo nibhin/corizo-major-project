@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Orders</title>
+    <link rel="stylesheet" href="/styles/main2.css"> <!-- Adjust if needed -->
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <a href="/admin/view-products">View Products</a>
+            <a href="/admin/view-orders">View Orders</a>
+            <a href="/admin/view-customers">View Customers</a>
+            <a href="/admin/add-product">Add Product</a>
+            <a href="/admin/view-transactions" class="active">View Transactions</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h1>All Orders</h1>
+        <% if (orders.length > 0) { %>
+            <ul>
+                <% orders.forEach(order => { %>
+                    <li>
+                        <h3>Order by <%= order.userId ? order.userId.username : 'Unknown' %> on <%= order.createdAt.toDateString() %></h3>
+                        <ul>
+                            <% order.products.forEach(product => { %>
+                                <li><%= product.name %> - <%= product.price %></li>
+                            <% }) %>
+                        </ul>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No orders yet.</p>
+        <% } %>
+    </main>
+</body>
+</html>

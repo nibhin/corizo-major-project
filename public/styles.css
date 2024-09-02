@@ -1,0 +1,148 @@
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    margin: 0;
+}
+
+.container {
+    width: 360px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.8s ease-out;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    position: relative;
+}
+
+h1:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #acb6e5;
+    margin: 12px auto;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #f9f9f9;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="email"]:focus {
+    border-color: #e5c7ac;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #74ebd5;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #5cb0c9;
+    transform: scale(1.02);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #777;
+}
+
+.footer a {
+    color: #acb6e5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Additional Styles */
+.container {
+    background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+    border: 1px solid #ddd;
+    padding: 30px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-group input {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    padding: 14px;
+}
+
+.btn {
+    background: #74ebd5;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #5cb0c9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}

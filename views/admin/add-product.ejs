@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="/styles/main4.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <a href="/admin/view-products">View Products</a>
+            <a href="/admin/view-orders">View Orders</a>
+            <a href="/admin/view-customers">View Customers</a>
+            <a href="/admin/add-product" class="active">Add Product</a>
+            <a href="/admin/view-transactions">View Transactions</a>
+            <a href="/admin/logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Add New Product</h2>
+        <form action="/admin/add-product" method="POST">
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" placeholder="Product Name" required><br>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="Product Description" required></textarea><br>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" placeholder="Price" required step="0.01"><br>
+
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" placeholder="Category"><br>
+
+            <label for="rating">Rating:</label>
+            <input type="number" id="rating" name="rating" placeholder="Rating" min="0" max="5" step="0.1"><br>
+
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" placeholder="Stock" required min="0"><br>
+
+            <label for="imageUrl">Image URL:</label>
+            <input type="text" id="imageUrl" name="imageUrl" placeholder="Image URL" required><br>
+
+            <button type="submit">Add Product</button>
+        </form>
+    </main>
+</body>
+</html>

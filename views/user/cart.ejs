@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/products">Products</a>
+            <a href="/cart">Cart</a>
+            <a href="/orders">Orders</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Your Cart</h1>
+        <% if (cart.length === 0) { %>
+            <p>Your cart is empty.</p>
+        <% } else { %>
+            <% cart.forEach(item => { %>
+                <div class="cart-item">
+                    <h2><%= item.product.name %></h2>
+                    <p>Price: <%= item.product.price %></p>
+                    <p>Quantity: <%= item.quantity %></p>
+                
+                    <!-- Remove from Cart Button -->
+                    <form action="/cart/remove/<%= item.product._id %>" method="POST" style="display:inline;">
+                        <button type="submit">Remove from Cart</button>
+                    </form>
+                
+                    <!-- Place Order Button -->
+                    <form action="/cart/placeOrder/<%= item.product._id %>" method="POST" style="display:inline;">
+                        <button type="submit">Place Order</button>
+                    </form>
+                </div>
+                
+            <% }); %>
+        <% } %>
+    </main>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/products">Products</a>
+            <a href="/orders">My Orders</a>
+            <a href="/cart">Cart</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Payment</h1>
+        <p>Total Cost: $<%= totalCost %></p>
+        <button id="payButton">Pay Now</button>
+    </main>
+
+    <script>
+        document.getElementById('payButton').addEventListener('click', function() {
+            // Simulate payment processing with a timeout for demonstration
+            setTimeout(function() {
+                window.location.href = '/payment/success';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

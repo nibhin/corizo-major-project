@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="/styles/main5.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/products">Products</a>
+            <a href="/orders">My Orders</a>
+            <a href="/cart">Cart</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h1>My Orders</h1>
+        <% if (orders.length > 0) { %>
+            <ul>
+                <% orders.forEach(order => { %>
+                    <li>
+                        <h2>Order ID: <%= order._id %></h2>
+                        <ul>
+                            <% order.products.forEach(item => { %>
+                                <li>
+                                    <%= item.productId ? item.productId.name : 'Product not found' %> - $<%= item.productId ? item.productId.price : 'N/A' %> x <%= item.quantity %>
+                                    <form action="/orders/cancel/<%= order._id %>/<%= item.productId._id %>" method="POST">
+                                        <button type="submit">Cancel This Order</button>
+                                    </form>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </li>
+                <% }); %>
+            </ul>
+            <!-- Single "Cancel All Orders" button at the end -->
+            <form action="/orders/cancelAll" method="POST">
+                <button type="submit">Cancel All Orders</button>
+            </form>
+            <form action="/orders/payment" method="POST">
+                <button type="submit">Proceed to Payment</button>
+            </form>
+        <% } else { %>
+            <p>You have no orders yet.</p>
+        <% } %>
+    </main>
+</body>
+</html>

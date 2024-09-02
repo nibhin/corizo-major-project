@@ -1,0 +1,103 @@
+/* styles/add-product.css */
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #f0f0f0;
+    background-color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+nav a.active, nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #f0f0f0;
+    border-bottom: 2px solid #555;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+    border-color: #888;
+    outline: none;
+}
+
+form button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+form button:active {
+    background-color: #004080;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav a {
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+}

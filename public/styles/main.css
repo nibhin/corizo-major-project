@@ -1,0 +1,400 @@
+/* Reset some basic styles */
+body, h1, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    padding: 0;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background: #1e1e1e; /* Darker header background */
+    color: #f5f5f5; /* Light text color for header */
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Deeper shadow for header */
+}
+
+header nav a {
+    color: #f5f5f5;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+header nav a:hover {
+    color: #ff5900; /* Orange for hover effect */
+    transform: scale(1.1); /* Slightly enlarge the link */
+}
+
+/* Main content */
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Heading */
+h1 {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #4f970b; /* Orange color for heading */
+    font-size: 2.5rem;
+    animation: fadeIn 2s ease-in-out; /* Animation for heading */
+}
+
+/* Product list */
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+/* Product card */
+li {
+    background: #044444; /* Dark background for cards */
+    border: 1px solid #ffffff;
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.4s, box-shadow 0.4s;
+    position: relative;
+    animation: cardBounce 1s ease-in-out infinite; /* Animation for cards */
+}
+
+li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Product image */
+li img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #333;
+    transition: transform 0.4s;
+}
+
+li:hover img {
+    transform: scale(1.05); /* Zoom effect on hover */
+}
+
+/* Product title */
+li h2 {
+    font-size: 1.8rem;
+    color: #ff9800;
+    margin: 1rem 0 0.5rem;
+    animation: textGlow 1.5s ease-in-out infinite alternate; /* Glowing text animation */
+}
+
+/* Product price */
+li span.price {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #81c784; /* Light green for price */
+    margin: 0.5rem 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    li {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes cardBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 152, 0, 0.8);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 152, 0, 1);
+    }
+}
+
+/* Cart and Orders Styling */
+.cart-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: black;
+}
+
+/* General button styling */
+.cart-item button, .payment-page button, .order-summary button {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white; /* White text */
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px; /* Space between buttons */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for buttons */
+.cart-item button:hover, .payment-page button:hover, .order-summary button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Specific styling for the "Remove from Cart" button */
+.cart-item button[type="submit"]:nth-of-type(1) {
+    background-color: #f44336; /* Red background */
+}
+
+/* Hover effect for "Remove from Cart" button */
+.cart-item button[type="submit"]:nth-of-type(1):hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Specific styling for the "Place Order" button */
+.cart-item button[type="submit"]:nth-of-type(2) {
+    background-color: #008CBA; /* Blue background */
+}
+
+/* Hover effect for "Place Order" button */
+.cart-item button[type="submit"]:nth-of-type(2):hover {
+    background-color: #007bb5; /* Darker blue on hover */
+}
+
+/* Payment Page */
+.payment-page {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.payment-page h2 {
+    font-size: 2rem;
+    color: #81c784;
+    margin-bottom: 1.5rem;
+}
+
+.payment-page p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+.payment-page .success-animation {
+    width: 100px;
+    height: 100px;
+    margin: 1.5rem auto;
+    border-radius: 50%;
+    background-color: #81c784;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: successAnim 2s ease-in-out forwards;
+}
+
+@keyframes successAnim {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Order Summary */
+.order-summary {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.order-summary h3 {
+    font-size: 1.8rem;
+    color: #ff9800;
+    margin-bottom: 1rem;
+}
+
+.order-summary p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+/* Cancel Order Button */
+.cancel-order-btn {
+    background-color: #f44336; /* Red background */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 10px 5px; /* Space between buttons */
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for Cancel Order Button */
+.cancel-order-btn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Cancel All Orders Button */
+.cancel-all-orders-btn {
+    background-color: #ff5722; /* Orange background */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 15px 0; /* Margin for separation */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for Cancel All Orders Button */
+.cancel-all-orders-btn:hover {
+    background-color: #e64a19; /* Darker orange on hover */
+}
+
+/* Payment Confirmation Page */
+.payment-confirmation {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.payment-confirmation h2 {
+    font-size: 2.5rem;
+    color: #81c784;
+    margin-bottom: 1.5rem;
+}
+
+.payment-confirmation p {
+    font-size: 1.4rem;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+}
+
+/* Success Animation */
+.payment-confirmation .success-animation {
+    width: 120px;
+    height: 120px;
+    margin: 2rem auto;
+    border-radius: 50%;
+    background-color: #81c784;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: successAnim 2s ease-in-out forwards;
+}
+
+@keyframes successAnim {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.payment-confirmation .success-animation:before {
+    content: '✔';
+    font-size: 3rem;
+    color: white;
+}
+
+/* Button for Payment Confirmation */
+.payment-confirmation button {
+    background-color: #008CBA; /* Blue background */
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 6px; /* Rounded corners */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for Payment Confirmation Button */
+.payment-confirmation button:hover {
+    background-color: #007bb5; /* Darker blue on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .payment-page, .order-summary, .payment-confirmation {
+        padding: 1rem;
+    }
+    
+    .payment-confirmation .success-animation {
+        width: 80px;
+        height: 80px;
+    }
+
+    .payment-confirmation button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+/* Add this to your main.css */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+
