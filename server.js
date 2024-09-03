@@ -8,18 +8,27 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const Admin = require('./models/Admin');
 const Payment = require('./models/Payment');
+const MongoStore = require('connect-mongo');
+const path = require('path'); // Add path module
 
 const app = express();
 
+// MongoDB Connection
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce';
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
+
 // Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from public directory
 
 // Session setup
 app.use(session({
     secret: process.env.SESSION_SECRET || 'your_secret_key', // Use environment variable or default for local development
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: mongoURI }), // Use MongoStore to store sessions in MongoDB
 }));
 
 // Flash messages middleware
@@ -64,8 +73,8 @@ app.use((req, res, next) => {
     res.locals.currentUser = req.user; // To pass the current user to views
     next();
 });
-app.set('views', path.join('/', 'views'));
 
+app.set('views', path.join(__dirname, 'views')); // Ensure the views directory path is correct
 app.set('view engine', 'ejs');
 
 // Routes
@@ -74,6 +83,7 @@ const adminRoutes = require('./routes/admin');
 app.use('/', userRoutes);
 app.use('/admin', adminRoutes);
 
+// Payment processing route
 app.post('/process-payment', async (req, res) => {
     try {
         const { userId, orderId, amount } = req.body;
@@ -96,16 +106,6 @@ app.post('/process-payment', async (req, res) => {
         res.status(500).send('Error processing payment');
     }
 });
-
-// Connect to MongoDB
-const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce';
-mongoose.connect(mongoURI)
-    .then(() => {
-        console.log('Connected to MongoDB');
-    })
-    .catch(err => {
-        console.error('Error connecting to MongoDB:', err);
-    });
 
 // Start server
 const port = process.env.PORT || 3000;
