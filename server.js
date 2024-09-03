@@ -106,7 +106,6 @@ app.post('/process-payment', async (req, res) => {
         res.status(500).send('Error processing payment');
     }
 });
-
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
