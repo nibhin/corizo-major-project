@@ -7,8 +7,9 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const Admin = require('./models/Admin');
-const app = express();
 const Payment = require('./models/Payment');
+
+const app = express();
 
 // Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,10 +17,11 @@ app.use(express.static('public'));
 
 // Session setup
 app.use(session({
-    secret: 'your_secret_key', // Replace with a strong secret key
+    secret: process.env.SESSION_SECRET || 'your_secret_key', // Use environment variable or default for local development
     resave: false,
     saveUninitialized: false,
 }));
+
 // Flash messages middleware
 app.use(flash());
 
@@ -70,6 +72,7 @@ const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin');
 app.use('/', userRoutes);
 app.use('/admin', adminRoutes);
+
 app.post('/process-payment', async (req, res) => {
     try {
         const { userId, orderId, amount } = req.body;
@@ -92,8 +95,10 @@ app.post('/process-payment', async (req, res) => {
         res.status(500).send('Error processing payment');
     }
 });
+
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/ecommerce')
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce';
+mongoose.connect(mongoURI)
     .then(() => {
         console.log('Connected to MongoDB');
     })
@@ -102,6 +107,7 @@ mongoose.connect('mongodb://localhost:27017/ecommerce')
     });
 
 // Start server
-app.listen(3000, () => {
-    console.log('Server started on http://localhost:3000');
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server started on http://localhost:${port}`);
 });
