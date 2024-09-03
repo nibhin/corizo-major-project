@@ -64,6 +64,7 @@ app.use((req, res, next) => {
     res.locals.currentUser = req.user; // To pass the current user to views
     next();
 });
+app.set('views', path.join('/', 'views'));
 
 app.set('view engine', 'ejs');
 
